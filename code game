@@ -1,0 +1,107 @@
+var x = 480;
+let borda = 330;
+var tela = 1;
+var imagen1;
+
+
+tela = 0
+
+function telaMenu(){
+  background(imagen1,100);
+noStroke();
+
+  
+// botões
+fill(178,34,34) 
+  if(mouseX >= x && mouseX <= 580 && mouseY >= 330 && mouseY <= 367  ){
+  fill(220);
+    if (mouseIsPressed){
+        tela = 1;
+      }
+    }
+  else{
+    fill(178,34,34); // cor do botão
+    }
+rect(x,330,100,37,10);
+  
+   if(mouseX >= x && mouseX <= 580 && mouseY >= 380 && mouseY <= 417  ){
+  fill(220);
+    if (mouseIsPressed){
+        tela = 2;
+      }
+    }
+  else{
+    fill(178,34,34); // cor do botão
+    }
+rect(x,380,100,37,10);
+  
+  if(mouseX >= x && mouseX <= 580 && mouseY >= 430 && mouseY <= 467  ){
+  fill(220);
+    if (mouseIsPressed){
+        tela = 3;
+      }
+    }
+  else{
+    fill(178,34,34); // cor do botão
+    }
+rect(x,430,100,37,10);  
+  
+// especificaçôes para a tela inicial
+fill(0,0,0)  
+textStyle(BOLDITALIC);  
+textSize(40)
+text("CORONA QUEST ",160,130);
+textSize(20);
+text("START",500,357);
+textSize(13);
+text("HOW TO PLAY",487,404)
+textSize(18)  
+text("CREDITS",490,456);
+  
+noFill();
+stroke(255,140,0);
+rect(480,borda,100,37,10);
+  
+}
+
+function telaPlay(){
+  background(240);
+  textSize(20);
+  textFont('fantasy');
+  text('jogo em desenvolvimento', 120, 100);
+  fill(0, 0, 0);
+}
+
+function setup() {
+  createCanvas(600, 500);
+  imagen1 = loadImage('meudeus.jpeg')
+}
+
+function draw() {
+  if (tela == 0){
+   telaMenu();
+  }
+  else  if ( tela ==1){
+    telaPlay();
+}
+}
+
+function keyPressed(){
+ if(keyCode === UP_ARROW){
+   if(borda == 380){
+     borda = 330
+   } else if (borda == 430){
+     borda = 380
+   } else {
+     borda = 430
+   }
+ }else if(keyCode === DOWN_ARROW){
+   if(borda == 380){
+     borda = 430
+   }else if(borda ==430){
+     borda = 330
+   } else {
+     borda = 380
+   }
+ }
+}
